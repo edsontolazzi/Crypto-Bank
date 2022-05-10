@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Crypto Bank</string>
+    <string name="text_num_conta">Número da conta</string>
+    <string name="text_senha">Senha</string>
+</resources>
