@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CryptoBank">
         <activity
-            android:name=".MainActivity"
+            android:name=".src.domains.login.ui.View"
+            android:exported="false" />
+        <activity
+            android:name=".src.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
