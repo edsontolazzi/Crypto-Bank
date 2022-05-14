@@ -7,7 +7,7 @@
     tools:context=".src.domains.menu.ui.MenuScreen">
 
     <Button
-        android:id="@+id/bt_deposito"
+        android:id="@+id/btDeposito"
         android:layout_width="227dp"
         android:layout_height="0dp"
         android:layout_marginStart="92dp"
@@ -24,7 +24,7 @@
         android:layout_marginTop="20dp"
         android:text="Saque"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_deposito" />
+        app:layout_constraintTop_toBottomOf="@+id/btDeposito" />
 
     <Button
         android:id="@+id/bt_transferencia"
