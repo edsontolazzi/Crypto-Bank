@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".src.domains.menu.ui.MenuScreen">
+
+    <Button
+        android:id="@+id/bt_deposito"
+        android:layout_width="227dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="44dp"
+        android:text="Depósito"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saldo" />
+
+    <Button
+        android:id="@+id/bt_saque"
+        android:layout_width="227dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="20dp"
+        android:text="Saque"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_deposito" />
+
+    <Button
+        android:id="@+id/bt_transferencia"
+        android:layout_width="227dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="20dp"
+        android:text="Transferência"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_saque" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cryptomlogo" />
+
+    <TextView
+        android:id="@+id/saldo_atual"
+        android:layout_width="74dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="32dp"
+        android:text="Saldo Atual"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/saldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="16dp"
+        android:text="R$ 0,00"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saldo_atual" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

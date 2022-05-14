@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CryptoBank">
         <activity
-            android:name=".src.domains.login.ui.View"
+            android:name=".src.domains.menu.ui.MenuScreen"
+            android:exported="false" />
+        <activity
+            android:name=".src.domains.login.ui.LoginScreen"
             android:exported="false" />
         <activity
             android:name=".src.MainActivity"
