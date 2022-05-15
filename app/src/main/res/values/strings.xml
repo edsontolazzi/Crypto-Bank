@@ -2,4 +2,7 @@
     <string name="app_name">Crypto Bank</string>
     <string name="text_num_conta">Número da conta</string>
     <string name="text_senha">Senha</string>
+    <string name="deposito">Depósito</string>
+    <string name="saque">Saque</string>
+    <string name="transferencia">Transferência</string>
 </resources>
