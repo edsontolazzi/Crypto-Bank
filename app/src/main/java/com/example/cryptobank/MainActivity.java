@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.cryptobank.tools.CustomToast;
 
@@ -47,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
         logo = findViewById(R.id.crypto_logo);
 
         //EditText's
-        numAccount = findViewById(R.id.text_num_conta);
+        numAccount = findViewById(R.id.text_valor);
         password = findViewById(R.id.text_senha);
 
         //Button's
-        btEntrar = findViewById(R.id.bt_entrar);
+        btEntrar = findViewById(R.id.bt_depositar);
     }
 
     /**

@@ -2,6 +2,7 @@ package com.example.cryptobank;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -77,9 +78,23 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void abrirTelaDeposito() { }
-    private void abrirTelaSaque() { }
-    private void abrirTelaTransferencia() { }
+    private void abrirTelaDeposito() {
+        Intent intent = new Intent(this, DepositActivity.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("jsonDadosCliente", this.jsonDadosCliente);
+
+        intent.putExtras(bundle);
+        this.startActivity(intent);
+    }
+
+    private void abrirTelaSaque() {
+
+    }
+
+    private void abrirTelaTransferencia() {
+
+    }
 
     private void exibeNomeCliente() {
         tvBemVindo.setText("Bem vindo(a), " + getAccountName() + "!");

@@ -3,9 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/chris/AndroidStudioProjects/Crypto-Bank/app/src/main/res/layout/activity_home.xml" value="0.33" />
-        <entry key="..\:/Users/chris/AndroidStudioProjects/Crypto-Bank/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/chris/AndroidStudioProjects/Crypto-Bank/app/src/main/res/xml/network_security_config.xml" value="0.13043478260869565" />
+        <entry key="..\:/Users/ju-ro/AndroidStudioProjects/CryptoBank2/app/src/main/res/layout/activity_deposit2.xml" value="0.33" />
         <entry key="..\:/Users/ju-ro/AndroidStudioProjects/CryptoBank2/app/src/main/res/layout/activity_main.xml" value="0.33" />
       </map>
     </option>
