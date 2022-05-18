@@ -2,6 +2,7 @@ package com.example.cryptobank;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.cryptobank.tools.CustomToast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,11 +27,15 @@ public class HomeActivity extends AppCompatActivity {
     private Button btDeposito = null;
     private Button btSaque = null;
     private Button btTransferencia = null;
+    private Button btReload = null;
+    Context context = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        context = this.getApplicationContext();
 
         receberParametros();
         initComponents();
@@ -53,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
         this.btDeposito = (Button) findViewById(R.id.bt_deposito);
         this.btSaque = (Button) findViewById(R.id.bt_saque);
         this.btTransferencia = (Button) findViewById(R.id.bt_transferencia);
+        this.btReload = (Button) findViewById(R.id.bt_reload);
     }
 
     private void initListeners() {
@@ -76,6 +84,13 @@ public class HomeActivity extends AppCompatActivity {
                 abrirTelaTransferencia();
             }
         });
+
+        this.btReload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buscarSaldoCliente();
+            }
+        });
     }
 
     private void abrirTelaDeposito() {
@@ -89,11 +104,25 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void abrirTelaSaque() {
+        Intent intent = new Intent(this, WithdrawActivity.class);
 
+        Bundle bundle = new Bundle();
+        bundle.putString("jsonDadosCliente", this.jsonDadosCliente);
+        bundle.putString("saldo", this.saldo);
+
+        intent.putExtras(bundle);
+        this.startActivity(intent);
     }
 
     private void abrirTelaTransferencia() {
+        Intent intent = new Intent(this, TransferenceActivity.class);
 
+        Bundle bundle = new Bundle();
+        bundle.putString("jsonDadosCliente", this.jsonDadosCliente);
+        bundle.putString("saldo", this.saldo);
+
+        intent.putExtras(bundle);
+        this.startActivity(intent);
     }
 
     private void exibeNomeCliente() {

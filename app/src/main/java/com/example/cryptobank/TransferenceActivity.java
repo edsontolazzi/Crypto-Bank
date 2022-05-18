@@ -16,18 +16,20 @@ import com.example.cryptobank.tools.CustomToast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DepositActivity extends AppCompatActivity {
+public class TransferenceActivity extends AppCompatActivity {
 
     private String jsonDadosCliente = null;
+    private String saldo = null;
     ImageView logo = null;
     EditText valor = null;
+    EditText contaDestino = null;
     Button btDeposito = null;
     Context context = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deposit2);
+        setContentView(R.layout.activity_transference);
 
         context = getApplicationContext();
 
@@ -40,6 +42,7 @@ public class DepositActivity extends AppCompatActivity {
     private void receberParametros() {
         Bundle bundle = getIntent().getExtras();
         this.jsonDadosCliente = bundle.getString("jsonDadosCliente");
+        this.saldo = bundle.getString("saldo");
     }
 
     /**
@@ -51,6 +54,7 @@ public class DepositActivity extends AppCompatActivity {
 
         //EditText's
         valor = findViewById(R.id.text_valor);
+        contaDestino = findViewById(R.id.text_conta_destino);
 
         //Button's
         btDeposito = findViewById(R.id.bt_transference);
@@ -73,16 +77,32 @@ public class DepositActivity extends AppCompatActivity {
             public void onClick(View view) {
                 API api = new API(getBaseContext(), getAccountNumber(), getToken());
                 String value = valor.getText().toString();
+                String conta = contaDestino.getText().toString();
 
                 if (!value.equals("0") && !value.equals("")) {
-                    api.deposit(value);
-                    CustomToast.showToast("Depósito realizado com sucesso!", context);
-                    finish();
+                    if (!conta.equals("") && conta.length() == 6) {
+                        if (Double.parseDouble(saldo) >= Double.parseDouble(value)) {
+                            api.transference(value, conta, TransferenceActivity.this);
+                        } else {
+                            CustomToast.showToast("Saldo insuficiente!", context);
+                        }
+                    } else {
+                        CustomToast.showToast("Conta destino inválida!", context);
+                    }
                 } else {
                     CustomToast.showToast("Valor inválido!", context);
                 }
             }
         });
+    }
+
+    public void finalizeTransference() {
+        CustomToast.showToast("Transferencia realizada com sucesso!", context);
+        finish();
+    }
+
+    public void accountNotFound() {
+        CustomToast.showToast("Conta destino inválida!", context);
     }
 
     private String getToken() {

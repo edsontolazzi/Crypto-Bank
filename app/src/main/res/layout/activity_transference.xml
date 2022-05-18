@@ -4,7 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".TransferenceActivity">
+
+    <EditText
+        android:id="@+id/text_conta_destino"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="144dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:maxLength="6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crypto_logo" />
 
     <ImageView
         android:id="@+id/crypto_logo"
@@ -22,11 +35,32 @@
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="60dp"
         android:autofillHints=""
         android:ems="10"
         android:inputType="numberDecimal"
-        android:maxLength="6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crypto_logo" />
+
+    <TextView
+        android:id="@+id/text_view_num_conta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="36dp"
+        android:text="Valor:"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crypto_logo" />
+
+    <TextView
+        android:id="@+id/text_view_num_conta2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="124dp"
+        android:text="Conta destino:"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/crypto_logo" />
 
@@ -35,42 +69,10 @@
         android:layout_width="159dp"
         android:layout_height="50dp"
         android:layout_marginStart="124dp"
-        android:layout_marginTop="39dp"
-        android:text="ENTRAR"
+        android:layout_marginTop="140dp"
+        android:text="TRANSFERIR"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_senha" />
-
-    <TextView
-        android:id="@+id/text_view_num_conta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="20dp"
-        android:text="Número da conta:"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crypto_logo" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="12dp"
-        android:text="Senha:"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_valor" />
-
-    <EditText
-        android:id="@+id/text_senha"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="64dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.text_senha);
 
         //Button's
-        btEntrar = findViewById(R.id.bt_depositar);
+        btEntrar = findViewById(R.id.bt_transference);
     }
 
     /**

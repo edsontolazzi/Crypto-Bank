@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ju-ro/AndroidStudioProjects/CryptoBank2/app/src/main/res/layout/activity_deposit2.xml" value="0.33" />
+        <entry key="..\:/Users/ju-ro/AndroidStudioProjects/CryptoBank2/app/src/main/res/layout/activity_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ju-ro/AndroidStudioProjects/CryptoBank2/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/ju-ro/AndroidStudioProjects/CryptoBank2/app/src/main/res/layout/activity_transference.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ju-ro/AndroidStudioProjects/CryptoBank2/app/src/main/res/layout/activity_withdraw.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ju-ro/AndroidStudioProjects/CryptoBank2/app/src/main/res/mipmap-anydpi-v26/cryptobank_lo.xml" value="0.196" />
       </map>
     </option>
   </component>

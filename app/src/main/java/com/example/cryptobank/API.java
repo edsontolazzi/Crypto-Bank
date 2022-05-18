@@ -3,7 +3,6 @@ package com.example.cryptobank;
 import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -12,17 +11,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cryptobank.tools.CustomToast;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
 public class API {
     public static String API_URL = "http://cryptobank.lucassilva.dev.br/api/";
+    public String RESPONSE = "";
     RequestQueue queue;
 
     private Context context;
@@ -37,7 +34,6 @@ public class API {
     public API(Context context, Integer numberAccount, String token) {
         this.context = context;
         this.queue = Volley.newRequestQueue(context);
-
         this.numberAccount = numberAccount;
         this.token = token;
     }
@@ -112,4 +108,132 @@ public class API {
         this.queue.add(stringRequest);
     }
 
+    public void deposit(String valor) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, API.API_URL + "deposit", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("RESPONSE DEPOSIT", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                erroAPI(error.getMessage());
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Accept","application/json");
+                params.put("Content-Type","application/json");
+
+                return params;
+            }
+
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    JSONObject json = new JSONObject();
+                    json.put("token", token);
+                    json.put("account", String.valueOf(numberAccount));
+                    json.put("value", valor);
+                    return json.toString().getBytes(StandardCharsets.UTF_8);
+                } catch (JSONException uee) {
+                    return null;
+                }
+            }
+        };
+
+        this.queue.add(stringRequest);
+    }
+
+    public void withdraw(String valor) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, API.API_URL + "withdraw", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("RESPONSE WITHDRAW", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                erroAPI(error.getMessage());
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Accept","application/json");
+                params.put("Content-Type","application/json");
+
+                return params;
+            }
+
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    JSONObject json = new JSONObject();
+                    json.put("token", token);
+                    json.put("account", String.valueOf(numberAccount));
+                    json.put("value", valor);
+                    return json.toString().getBytes(StandardCharsets.UTF_8);
+                } catch (JSONException uee) {
+                    return null;
+                }
+            }
+        };
+
+        this.queue.add(stringRequest);
+    }
+
+    public void transference(String valor, String contaDestino, TransferenceActivity activity) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, API.API_URL + "transference", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.equals("{\"result\":{\"result\":\"Success\"}}")) {
+                    activity.finalizeTransference();
+                } else {
+                    activity.accountNotFound();
+                }
+                Log.d("RESPONSE TRANSFERENCE", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                erroAPI(error.getMessage());
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Accept","application/json");
+                params.put("Content-Type","application/json");
+
+                return params;
+            }
+
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    JSONObject json = new JSONObject();
+                    json.put("token", token);
+                    json.put("account", String.valueOf(numberAccount));
+                    json.put("value", valor);
+                    json.put("to_account", contaDestino);
+                    return json.toString().getBytes(StandardCharsets.UTF_8);
+                } catch (JSONException uee) {
+                    return null;
+                }
+            }
+        };
+
+        this.queue.add(stringRequest);
+    }
 }

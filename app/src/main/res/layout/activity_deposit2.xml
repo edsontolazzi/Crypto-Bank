@@ -26,7 +26,6 @@
         android:autofillHints=""
         android:ems="10"
         android:inputType="numberDecimal"
-        android:maxLength="6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/crypto_logo" />
 
@@ -42,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/crypto_logo" />
 
     <Button
-        android:id="@+id/bt_depositar"
+        android:id="@+id/bt_transference"
         android:layout_width="159dp"
         android:layout_height="50dp"
         android:layout_marginStart="124dp"

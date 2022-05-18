@@ -1,7 +1,6 @@
 package com.example.cryptobank;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
@@ -16,9 +15,10 @@ import com.example.cryptobank.tools.CustomToast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DepositActivity extends AppCompatActivity {
+public class WithdrawActivity extends AppCompatActivity {
 
     private String jsonDadosCliente = null;
+    private String saldo = null;
     ImageView logo = null;
     EditText valor = null;
     Button btDeposito = null;
@@ -27,7 +27,7 @@ public class DepositActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deposit2);
+        setContentView(R.layout.activity_withdraw);
 
         context = getApplicationContext();
 
@@ -40,6 +40,7 @@ public class DepositActivity extends AppCompatActivity {
     private void receberParametros() {
         Bundle bundle = getIntent().getExtras();
         this.jsonDadosCliente = bundle.getString("jsonDadosCliente");
+        this.saldo = bundle.getString("saldo");
     }
 
     /**
@@ -75,9 +76,13 @@ public class DepositActivity extends AppCompatActivity {
                 String value = valor.getText().toString();
 
                 if (!value.equals("0") && !value.equals("")) {
-                    api.deposit(value);
-                    CustomToast.showToast("Depósito realizado com sucesso!", context);
-                    finish();
+                    if (Double.parseDouble(saldo) >= Double.parseDouble(value)) {
+                        api.withdraw(value);
+                        CustomToast.showToast("Retirada realizada com sucesso!", context);
+                        finish();
+                    } else {
+                        CustomToast.showToast("Saldo insuficiente!", context);
+                    }
                 } else {
                     CustomToast.showToast("Valor inválido!", context);
                 }
