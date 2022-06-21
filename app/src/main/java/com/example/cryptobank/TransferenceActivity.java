@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.cryptobank.tools.CustomToast;
+import com.example.cryptobank.tools.MoneyTextWatcher;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,6 +76,8 @@ public class TransferenceActivity extends AppCompatActivity {
      * Function to listener events
      */
     protected void listenerEvents() {
+        this.valor.addTextChangedListener(new MoneyTextWatcher(this.valor));
+
         btDeposito.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -83,8 +86,10 @@ public class TransferenceActivity extends AppCompatActivity {
                 String value = valor.getText().toString();
                 String conta = contaDestino.getText().toString();
 
-                if (!value.equals("0") && !value.equals("")) {
+                if (!value.equals("0") && !value.equals("") && !value.equals("0,00")) {
                     if (!conta.equals("") && conta.length() == 6) {
+                        value = MoneyTextWatcher.formatPriceSave(value);
+
                         if (Double.parseDouble(saldo) >= Double.parseDouble(value)) {
                             api.transference(value, conta, TransferenceActivity.this);
                         } else {

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.cryptobank.tools.CustomToast;
+import com.example.cryptobank.tools.MoneyTextWatcher;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,6 +73,8 @@ public class WithdrawActivity extends AppCompatActivity {
      * Function to listener events
      */
     protected void listenerEvents() {
+        this.valor.addTextChangedListener(new MoneyTextWatcher(this.valor));
+
         btDeposito.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -79,7 +82,9 @@ public class WithdrawActivity extends AppCompatActivity {
                 API api = new API(getBaseContext(), getAccountNumber(), getToken());
                 String value = valor.getText().toString();
 
-                if (!value.equals("0") && !value.equals("")) {
+                if (!value.equals("0") && !value.equals("") && !value.equals("0,00")) {
+                    value = MoneyTextWatcher.formatPriceSave(value);
+
                     if (Double.parseDouble(saldo) >= Double.parseDouble(value)) {
                         api.withdraw(value);
                         CustomToast.showToast("Retirada realizada com sucesso!", context);
