@@ -31,6 +31,10 @@ public class TransferenceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transference);
 
+        String titulo = getTitle().toString();
+        titulo += " - Transferência";
+        setTitle(titulo);
+
         context = getApplicationContext();
 
         this.receberParametros();

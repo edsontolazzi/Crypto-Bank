@@ -29,6 +29,10 @@ public class DepositActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deposit2);
 
+        String titulo = getTitle().toString();
+        titulo += " - Depósito";
+        setTitle(titulo);
+
         context = getApplicationContext();
 
         this.receberParametros();

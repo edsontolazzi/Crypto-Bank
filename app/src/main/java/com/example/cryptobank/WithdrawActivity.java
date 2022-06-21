@@ -29,6 +29,10 @@ public class WithdrawActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_withdraw);
 
+        String titulo = getTitle().toString();
+        titulo += " - Saque";
+        setTitle(titulo);
+
         context = getApplicationContext();
 
         this.receberParametros();
