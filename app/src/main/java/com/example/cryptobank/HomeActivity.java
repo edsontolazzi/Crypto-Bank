@@ -16,6 +16,9 @@ import com.example.cryptobank.tools.CustomToast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class HomeActivity extends AppCompatActivity {
 
     private String jsonDadosCliente = null;
@@ -186,6 +189,11 @@ public class HomeActivity extends AppCompatActivity {
 
     public void setSaldo(String saldo) {
         this.saldo = saldo;
-        tvSaldo.setText("R$ " + this.saldo);
+
+        double valor = Double.parseDouble(this.saldo);
+        Locale ptBr = new Locale("pt","BR");
+        String valorConvertido = NumberFormat.getCurrencyInstance(ptBr).format(valor);
+
+        tvSaldo.setText(valorConvertido);
     }
 }
